@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /*
 	- scopes
 	- profiles
+	- interceptors
  */
 @SpringBootApplication
 public class ScopesApplication {
