@@ -17,11 +17,6 @@ public class RequestResponseLoggingFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
-    @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
@@ -31,10 +26,5 @@ public class RequestResponseLoggingFilter implements Filter {
         filterChain.doFilter(servletRequest, servletResponse);
 
         LOGGER.info("Logging response: {}", httpServletResponse.getContentType());
-    }
-
-    @Override
-    public void destroy() {
-
     }
 }
