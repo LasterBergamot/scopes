@@ -2,6 +2,8 @@ package com.pet.project.scopes.controller;
 
 import com.pet.project.scopes.model.scoped.ext.RequestScopedBean;
 import com.pet.project.scopes.model.scoped.ext.SessionScopedBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ScopesController {
 
-    private RequestScopedBean requestScopedBean;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ScopesController.class);
 
-    private SessionScopedBean sessionScopedBean;
+    private final RequestScopedBean requestScopedBean;
+    private final SessionScopedBean sessionScopedBean;
 
     @Autowired
     public ScopesController(RequestScopedBean requestScopedBean, SessionScopedBean sessionScopedBean) {
@@ -26,12 +29,11 @@ public class ScopesController {
      */
     @GetMapping("/scopes/request")
     public String getRequestScopedMessage() {
-        System.out.println();
-        System.out.println("Request scoped bean");
-        System.out.println("Default message: " + requestScopedBean.getHelloMessageGenerator().getMessage());
-        System.out.println("Setting message to 'Hello, World!'");
+        LOGGER.info("Request scoped bean");
+        LOGGER.info("Default message: {}", requestScopedBean.getHelloMessageGenerator().getMessage());
+        LOGGER.info("Setting message to 'Hello, World!'");
         requestScopedBean.getHelloMessageGenerator().setMessage("Hello, World!");
-        System.out.println("Message after setting: " + requestScopedBean.getHelloMessageGenerator().getMessage());
+        LOGGER.info("Message after setting: {}", requestScopedBean.getHelloMessageGenerator().getMessage());
 
         return "index";
     }
@@ -43,12 +45,11 @@ public class ScopesController {
      */
     @GetMapping("/scopes/session")
     public String getSessionScopedMessage() {
-        System.out.println();
-        System.out.println("Session scoped bean");
-        System.out.println("Default message: " + sessionScopedBean.getHelloMessageGenerator().getMessage());
-        System.out.println("Setting message to 'Hello, World!'");
+        LOGGER.info("Session scoped bean");
+        LOGGER.info("Default message: {}", sessionScopedBean.getHelloMessageGenerator().getMessage());
+        LOGGER.info("Setting message to 'Hello, World!'");
         sessionScopedBean.getHelloMessageGenerator().setMessage("Hello, World!");
-        System.out.println("Message after setting: " + sessionScopedBean.getHelloMessageGenerator().getMessage());
+        LOGGER.info("Message after setting: {}", sessionScopedBean.getHelloMessageGenerator().getMessage());
 
         return "index";
     }
