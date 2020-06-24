@@ -3,6 +3,11 @@ package com.pet.project.scopes;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/*
+	- scopes
+	- profiles
+	- interceptors
+ */
 @SpringBootApplication
 public class ScopesApplication {
 
