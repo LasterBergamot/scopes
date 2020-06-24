@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 	- scopes
 	- profiles
 	- interceptors
+	- controller advices
+	- filters
  */
 @SpringBootApplication
 public class ScopesApplication {
