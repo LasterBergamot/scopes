@@ -35,7 +35,7 @@ public class RandomInterceptor implements HandlerInterceptor {
             response.sendError(404);
         }
 
-        LOGGER.info("preHandle() method is calling!");
+        LOGGER.info("preHandle() method is calling! Status: {}", response.getStatus());
 
         return true;
     }
@@ -50,7 +50,7 @@ public class RandomInterceptor implements HandlerInterceptor {
             response.sendRedirect("/scopes/session");
         }
 
-        LOGGER.info("postHandle() method is calling!");
+        LOGGER.info("postHandle() method is calling! Status: {}", response.getStatus());
     }
 
     /*
